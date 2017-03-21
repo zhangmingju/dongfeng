@@ -1,0 +1,72 @@
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.428571429;
+  color: #333333;
+  background-color: #ffffff;
+}
+
+a:hover,
+a:focus {
+  color: #2a6496;
+  text-decoration: underline;
+}
+
+a:focus {
+  outline: thin dotted #333;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.user_image{
+  border-radius:50px;
+  height: 80px;
+  width: 80px;
+}
+.captcha {
+  margin-top: -20px;
+}
+.form_padding {
+  padding: 20px;
+}
+.user_nick_name {
+  margin-left:10px;
+}
+.top_border {
+  border-top:1px solid #ddd;
+  padding: 10px;
+}
+.header {
+  border:1px solid red;
+  height:60px;
+  margin:0 auto;
+}
+.header_logo {
+  float:left;
+  padding:18px;
+  margin-left:20%;
+}
+.header_logo_image {
+  width:120px;
+  margin-left:20px;
+  padding:10px;
+}
+.login{
+  text-align: center;
+}
+.current_user{
+  color:#333;
+  background: #fff;
+}
+.yield_center{
+  margin:0 auto;
+  width:65%;
+}
+.padding_logo {
+  margin-left:10px; margin-top:10px;
+}
+.header_login{
+  margin-left:0px;
+  margin-right: 0px;
+  padding-left: 20%;
+  padding-right: 20%;
+}

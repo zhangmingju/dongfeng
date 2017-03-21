@@ -1,0 +1,8 @@
+# encoding: utf-8
+<p>欢迎 <%= @email %>!</p>
+
+<p>请点击下面的链接，完成注册。</p>
+
+<p><%= link_to '点击确认', confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>本邮件由把酒东风自动发出，请勿直接回复！</p>

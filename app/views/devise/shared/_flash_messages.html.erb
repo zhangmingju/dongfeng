@@ -1,0 +1,28 @@
+<% if flash.any?%>
+  <div id="flash-messages">
+    <% if flash[:notice]%>
+      <div class="alert alert-info alert-autocloseable-info text-center">
+        <a class="close" data-dismiss='alert'>x</a>
+        <%= flash[:notice]%>
+      </div>
+    <% end %>
+    <% if flash[:success]%>
+      <div class="alert alert-success alert-autocloseable-success text-center">
+        <a class="close" data-dismiss='alert'>x</a>
+        <%= flash[:success]%>
+      </div>
+    <% end %>
+    <% if flash[:warning]%>
+      <div class="alert alert-warning alert-autocloseable-warning text-center">
+        <a class="close" data-dismiss='alert'>x</a>
+        <%= flash[:warning]%>
+      </div>
+    <% end %>
+    <% if flash[:danger]%>
+      <div class="alert alert-danger alert-autocloseable-danger text-center">
+        <a class="close" data-dismiss='alert'>x</a>
+        <%= flash[:danger]%>
+      </div>
+    <% end %>
+  </div>
+<% end %>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>把酒东风</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body class="all">
+    <div>
+      <%= render 'shared/header'%>
+      <div class="yield_center">
+        <%=render 'shared/flash_messages'%>
+        <%= yield %>
+      </div>
+      <%= render 'shared/footer'%>
+    </div>
+    
+  </body>
+</html>
