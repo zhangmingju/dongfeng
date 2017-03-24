@@ -35,34 +35,13 @@ a:focus {
   border-top:1px solid #ddd;
   padding: 10px;
 }
-.header {
-  border:1px solid red;
-  height:60px;
-  margin:0 auto;
-}
-.header_logo {
-  float:left;
-  padding:18px;
-  margin-left:20%;
-}
-.header_logo_image {
-  width:120px;
-  margin-left:20px;
-  padding:10px;
-}
 .login{
   text-align: center;
-}
-.current_user{
-  color:#333;
-  background: #fff;
 }
 .yield_center{
   margin:0 auto;
   width:65%;
-}
-.padding_logo {
-  margin-left:10px; margin-top:10px;
+  margin-top:50px;
 }
 .header_login{
   margin-left:0px;

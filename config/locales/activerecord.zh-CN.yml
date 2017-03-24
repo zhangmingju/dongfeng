@@ -1,0 +1,41 @@
+zh-CN:
+  activerecord:
+    attributes:
+      user:
+        username: "登录名"
+        current_password: "当前密码"
+        email: "电子邮箱"
+        password: "密码"
+        password_confirmation: "密码确认"
+        remember_me: "记住登录信息"
+        nick_name: "昵称"
+        phone_number: "电话号码"
+      category:
+        name: "名称："
+        desc: "描述："
+        image: "图片："
+      article:
+        name: "名称："
+        content: "内容 :"
+    models:
+      user: "用户"
+    errors:
+      models:
+        user:
+          attributes:
+            current_password:
+              invalid: "无效"
+            password_confirmation:
+              confirmation: "和确认值不同"
+            password:
+              too_short: "太短（至少８个字符）"
+            email:
+              taken: "已经存在"
+            nick_name:
+              blank: "不能为空"
+            phone_number:
+              taken: "已经存在"
+        category:
+          attributes:
+            name:
+              taken: "不能重复"

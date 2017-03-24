@@ -1,0 +1,42 @@
+<% content_for :title do %>
+  类别列表
+<% end %>
+<h2 class="col-sm-offset-5">
+  <span>类别列表<span>
+</h2>
+<div class="container">
+  <p><%= link_to '添加类别', new_admin_category_path, class: ' btn btn-success'%></p>
+  <% if @categories.present? %>
+    <div class = "panel panel-default">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>title</th>
+            <th>desc</th>
+            <th>image</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @categories.each do |category|%>
+            <tr>
+              <td class="col-sm-2"><%=category.id%></td>
+              <td class="col-sm-2"><%=category.name%></td>
+              <td class="col-sm-2"><%=category.desc%></td>
+              <td><%=image_tag category.image_url,size:"80x80"%></td>
+              <td class="col-sm-2">
+               <%= link_to '修改',edit_admin_category_path(category)%>|
+               <%= link_to '删除', admin_category_path(category), method: :delete, data: { confirm: '确定要删除吗？' }%> 
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  <% else %>
+    <div class="col-sm-offset-2">
+      <h2>赶快来添加吧！</h2>
+    </div>
+  <% end %>
+</div>

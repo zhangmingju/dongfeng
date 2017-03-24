@@ -1,0 +1,17 @@
+<div class="page-header">
+  <h2><%=@article.name%></h2>
+  <div class="row">
+    <div class="col-md-12 block-margin">
+      <div class="text-right">
+        <span class="label label-primary mr5">
+          <%=@article.category.try(:name)%>
+        </span>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%=raw @article.content_html%>
+    </div>
+  </div>
+</div>

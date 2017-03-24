@@ -13,5 +13,6 @@ module Dongfeng
     # -- all .rb files in that directory are automatically loaded.
     config.i18n.default_locale = "zh-CN"
     config.autoload_paths +=  %W(#{config.root}/lib)
+    config.eager_load_paths << Rails.root.join('app', 'form_builders')
   end
 end

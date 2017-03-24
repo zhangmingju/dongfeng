@@ -1,12 +1,11 @@
 class Users::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
   prepend_before_action :valify_captcha!, only: [:create]
-  # before_action :default_image, only:[:create]
 
   # GET /resource/sign_in
-  # def new
-  #   super
-  # end
+  def new
+    super
+  end
 
   # POST /resource/sign_in
   def create
@@ -24,8 +23,6 @@ class Users::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-
-
 
   def valify_captcha!
     unless verify_rucaptcha?

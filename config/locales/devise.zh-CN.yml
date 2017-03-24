@@ -1,33 +1,4 @@
 zh-CN:
-  activerecord:
-    attributes:
-      user:
-        username: "登录名"
-        current_password: "当前密码"
-        email: "电子邮箱"
-        password: "密码"
-        password_confirmation: "密码确认"
-        remember_me: "记住登录信息"
-        nick_name: "昵称"
-        phone_number: "电话号码"
-    models:
-      user: "用户"
-    errors:
-      models:
-        user:
-          attributes:
-            current_password:
-              invalid: "无效"
-            password_confirmation:
-              confirmation: "和确认值不同"
-            password:
-              too_short: "太短（至少８个字符）"
-            email:
-              taken: "已经存在"
-            nick_name:
-              blank: "不能为空"
-            phone_number:
-              taken: "已经存在"
   devise:
     confirmations:
       confirmed: "恭喜您，注册成功，现在可以登录了"
@@ -110,6 +81,7 @@ zh-CN:
         sign_in: "登录"
         login_placeholder: "请输入邮箱或用户名"
         password_placeholder: "请输入登录密码"
+        github: "github 登录"
       signed_in: "登录成功."
       signed_out: "退出成功."
     shared:

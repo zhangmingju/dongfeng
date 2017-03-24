@@ -11,7 +11,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     build_resource(sign_up_params)
     if verify_rucaptcha?(resource) && resource.save
-      resource.default_image
+      UserImageWorker.perform_async(resource.id)
       yield resource if block_given?
       if resource.persisted?
         if resource.active_for_authentication?

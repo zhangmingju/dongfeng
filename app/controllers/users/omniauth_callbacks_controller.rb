@@ -7,17 +7,28 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   # end
 
   # More info at:
+  # 这是具体的实现步骤
   # https://github.com/plataformatec/devise#omniauth
-
+  # https://github.com/plataformatec/devise/wiki/OmniAuth:-Overview
   # GET|POST /resource/auth/twitter
-  # def passthru
-  #   super
-  # end
+  def github
+    @user = User.from_omniauth(request.env["omniauth.auth"])
+
+    if @user.persisted?
+      UserImageWorker.perform_async(@user.id) if @user.image.blank?
+      sign_in_and_redirect @user, :event => :authentication #this will throw if @user is not activated
+      set_flash_message(:notice, :success, :kind => "Github") if is_navigational_format?
+    else
+      session["devise.facebook_data"] = request.env["omniauth.auth"]
+      redirect_to new_user_registration_url
+    end
+  end
+
 
   # GET|POST /users/auth/twitter/callback
-  # def failure
-  #   super
-  # end
+  def failure
+    redirect_to root_path
+  end
 
   # protected
 

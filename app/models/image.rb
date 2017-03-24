@@ -7,4 +7,8 @@ class Image < ApplicationRecord
       image.image.url
     end
   end
+
+  def self.default_image
+    "/uploads/image/default.jpg"
+  end
 end

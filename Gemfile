@@ -58,7 +58,20 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'rucaptcha'
 gem 'letter_avatar'
 gem 'devise'
+gem 'devise-async'
+gem 'omniauth-github'
 
 gem 'mini_magick'
 gem 'carrierwave', '~> 1.0'
 
+gem 'sidekiq'
+gem 'redis-namespace'
+gem 'redis'
+gem 'sinatra', github: 'sinatra'
+
+gem 'unicorn'
+
+gem 'friendly_id', '~> 5.1.0'
+
+#markdown
+gem 'redcarpet', '~> 3.4'
