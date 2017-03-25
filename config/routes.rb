@@ -14,7 +14,11 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :categories
-    resources :articles
+    resources :articles do 
+      collection do 
+        post :preview
+      end
+    end
   end
 end
 

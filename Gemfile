@@ -75,3 +75,10 @@ gem 'friendly_id', '~> 5.1.0'
 
 #markdown
 gem 'redcarpet', '~> 3.4'
+
+gem 'rails-timeago', '~> 2.0'
+
+gem 'kaminari'
+
+gem 'rolify'
+gem 'cancan'

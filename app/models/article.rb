@@ -4,8 +4,14 @@ class Article < ApplicationRecord
   validates :name, presence: true, uniqueness: true
   validates :content, presence: true
   belongs_to :category, counter_cache: true
+  belongs_to :user
   before_save :fill_html_content
 
+  scope :default_order, -> { order("created_at DESC") }
+  
+  def get_user
+    self.user.try(:nick_name) || self.user.try(:email)
+  end
   private 
 
   def fill_html_content

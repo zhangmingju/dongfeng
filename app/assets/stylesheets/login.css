@@ -42,10 +42,29 @@ a:focus {
   margin:0 auto;
   width:65%;
   margin-top:50px;
+  margin-bottom: 50px;
 }
 .header_login{
   margin-left:0px;
   margin-right: 0px;
   padding-left: 20%;
   padding-right: 20%;
+}
+.article_title{
+  border-bottom: 1px solid #ddd;
+  padding: 10px;
+  text-align: center;
+}
+.article_preview{
+  position: absolute;
+  left:700px;
+  top:767px;
+}
+.article_preivew_modal{
+  width: 1200px;
+  height: 1000px;
+  overflow: auto;
+}
+.article_preview_title{
+  text-align: center;
 }

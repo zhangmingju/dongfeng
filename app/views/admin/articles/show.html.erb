@@ -1,17 +1,9 @@
-<div class="page-header">
-  <h2><%=@article.name%></h2>
-  <div class="row">
-    <div class="col-md-12 block-margin">
-      <div class="text-right">
-        <span class="label label-primary mr5">
-          <%=@article.category.try(:name)%>
-        </span>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-md-8">
-      <%=raw @article.content_html%>
-    </div>
+<h2 class="article_title"><%=@article.name%></h2>
+<p class="pull-right">
+  <%= custome_time_ago(@article.created_at)%>
+</p>
+<div class="row">
+  <div class="col-md-10 col-sm-offset-1">
+    <%=raw @article.content_html%>
   </div>
 </div>

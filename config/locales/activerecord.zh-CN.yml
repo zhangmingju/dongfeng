@@ -17,6 +17,7 @@ zh-CN:
       article:
         name: "名称："
         content: "内容 :"
+        category_id: "类别 : "
     models:
       user: "用户"
     errors:
@@ -39,3 +40,10 @@ zh-CN:
           attributes:
             name:
               taken: "不能重复"
+        article:
+          attributes:
+            name:
+              blank: "不能为空"
+              taken: "不能重复"
+            content: 
+              blank: "不能为空"

@@ -23,9 +23,9 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
   %w( text_field text_area url_field file_field collection_select select email_field password_field ).each do |method_name|
     define_method(method_name) do |method, *tag_value|
       content_tag(:div, class: 'form-group') do
-        label(method, class: 'col-sm-2 control-label col-sm-offset-2') +
+        label(method, class: 'col-sm-2 control-label') +
         if method_name == "text_area"
-          content_tag(:div, class: 'col-sm-7') do
+          content_tag(:div, class: 'col-sm-10') do
             super(method, *tag_value)
           end
         else

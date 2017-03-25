@@ -15,6 +15,7 @@
             <th>title</th>
             <th>desc</th>
             <th>image</th>
+            <th>count</th>
             <th>操作</th>
           </tr>
         </thead>
@@ -25,6 +26,7 @@
               <td class="col-sm-2"><%=category.name%></td>
               <td class="col-sm-2"><%=category.desc%></td>
               <td><%=image_tag category.image_url,size:"80x80"%></td>
+              <td class="col-sm-2"><%=category.articles_count%></td>
               <td class="col-sm-2">
                <%= link_to '修改',edit_admin_category_path(category)%>|
                <%= link_to '删除', admin_category_path(category), method: :delete, data: { confirm: '确定要删除吗？' }%> 

@@ -3,7 +3,7 @@ class Admin::ArticlesController < ApplicationController
   before_action :set_article,only:[:show,:edit,:update,:destroy]
 
   def index
-    @articles = Article.all
+    @articles = Article.includes(:user,:category).default_order.page(params[:page]).per(2)
   end
 
   def show
@@ -35,7 +35,13 @@ class Admin::ArticlesController < ApplicationController
 
   def destroy
     @article.destroy
-    redirect_to admin_articles_path
+    redirect_to admin_articles_path,notice: '文章成功删除!'
+  end
+
+  def preview
+    content = params[:content]
+    html_content = MyMarkdown.render(content)
+    render json:{html_content: html_content}
   end
 
   private 
@@ -44,6 +50,6 @@ class Admin::ArticlesController < ApplicationController
     end
 
     def article_params
-      params.require(:article).permit(:name,:content)
+      params.require(:article).permit(:name,:content,:user_id,:category_id)
     end
 end
