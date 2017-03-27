@@ -10,6 +10,7 @@
       <div class="panel-body">
         <p>第<%=current_user.id%>会员</p>
         <p><%=current_user.created_at%></p>
+        <p>当前角色 <%=user_role(current_user)%></p>
         <p>
           <%=link_to "修改密码" , edit_user_registration_path%>
         </p>

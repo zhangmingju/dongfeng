@@ -68,3 +68,13 @@ a:focus {
 .article_preview_title{
   text-align: center;
 }
+.index_category{
+  margin-left:40px;
+}
+.footer{
+  height: 80px;
+}
+.footer_info{
+  text-align: center;
+  padding:20px;
+}

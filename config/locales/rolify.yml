@@ -1,0 +1,6 @@
+zh-CN:
+  rolify:
+    message: "你无权访问这个界面!"
+en:
+  rolify:
+    message: "You are not authorized to access this page!"

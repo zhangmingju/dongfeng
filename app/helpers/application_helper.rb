@@ -13,4 +13,8 @@ module ApplicationHelper
   def custome_time_ago(time)
     timeago_tag time, lang: 'zh-CN', limit: 1.years.ago
   end
+
+  def user_role(user)
+    user.roles.first.name || "普通用户"
+  end
 end

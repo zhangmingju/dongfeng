@@ -39,7 +39,7 @@ class BootstrapFormBuilder < ActionView::Helpers::FormBuilder
 
   def submit(*tag_value)
     content_tag(:div, class: 'form-group') do
-      content_tag(:div, class: 'col-sm-4 col-sm-offset-5') do
+      content_tag(:div, class: 'col-sm-4 col-sm-offset-3') do
         super
       end
     end

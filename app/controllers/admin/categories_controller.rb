@@ -1,6 +1,7 @@
-class Admin::CategoriesController < ApplicationController
+class Admin::CategoriesController < Admin::AdminController
   layout 'application'
   before_action :set_category,only:[:edit,:update,:destroy]
+  load_and_authorize_resource :only => [:new, :edit]
 
   def index
     @categories = Category.all.default_order
@@ -37,9 +38,8 @@ class Admin::CategoriesController < ApplicationController
   end
 
   def destroy
-
     @category.destroy
-    redirect_to admin_categories_path
+    redirect_to admin_categories_path,notice: '分类成功删除!'
   end
 
   private 

@@ -14,5 +14,6 @@ module Dongfeng
     config.i18n.default_locale = "zh-CN"
     config.autoload_paths +=  %W(#{config.root}/lib)
     config.eager_load_paths << Rails.root.join('app', 'form_builders')
+    config.active_job.queue_adapter = :sidekiq
   end
 end

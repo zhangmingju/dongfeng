@@ -19,7 +19,9 @@ class DeviseBackgrounder
   def deliver_later
     # You need to hardcode the class of the Devise mailer that you
     # actually want to use. The default is Devise::Mailer.
+    LoggerApp.info("-------------111------")
     Devise::Mailer.delay.send(@method, @record, @token, @opts)
+     LoggerApp.info("-------------22-----")
   end
  
 end

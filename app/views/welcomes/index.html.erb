@@ -1,0 +1,53 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-5 col-sm-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          最近的文章
+        </div>
+        <div class="panel-body">
+          <% @least_articles.each do |article| %>
+            <p>
+              <span><%= link_to article.name,article_path(article)%></span>
+              <span class="pull-right"><%=custome_time_ago(article.created_at)%></span>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-5 col-sm-offset-1">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          最热的文章
+        </div>
+        <div class="panel-body">
+          <% @least_articles.each do |article| %>
+            <p>
+              <span><%= link_to article.name,article_path(article)%></span>
+              <span class="pull-right"><%=custome_time_ago(article.created_at)%></span>
+            </p>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class='col-sm-11 col-sm-offset-1'>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          所有分类
+        </div>
+        <div class="panel-body">
+          <% @categories.each do |category| %>
+            <div class="pull-left col-sm-3">
+              <a href="<%=category_path(category)%>">
+                <p><%=image_tag category.image_url,size:"150x150"%></p>
+                <p class="index_category"><%=category.name%>(<%=category.articles_count%>)</p>     
+              </a>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

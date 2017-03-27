@@ -1,9 +1,9 @@
-class Admin::ArticlesController < ApplicationController
+class Admin::ArticlesController < Admin::AdminController
   layout 'application'
   before_action :set_article,only:[:show,:edit,:update,:destroy]
 
   def index
-    @articles = Article.includes(:user,:category).default_order.page(params[:page]).per(2)
+    @articles = Article.includes(:user,:category).default_order.page(params[:page])
   end
 
   def show

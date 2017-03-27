@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     omniauth_callbacks:'users/omniauth_callbacks'
   }
   root to: "welcomes#index"
-  get 'admin' => 'admin/homes#index'
+  get 'user/root' => "welcomes#index"
+
+  resources :articles, only: [:show,:index]
+  resources :categories, only: [:index,:show]
 
   resources :users, only: [:show,:update,:index]
   mount Sidekiq::Web => '/sidekiq'
