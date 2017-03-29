@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'https://ruby.taobao.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -82,3 +82,5 @@ gem 'kaminari'
 
 gem 'rolify'
 gem 'cancan'
+
+gem 'mina', '~> 1.0', '>= 1.0.6'

@@ -1,0 +1,129 @@
+zh-CN:
+  admin:
+    articles:
+      form:
+        save: "保存"
+        preview: "预览"
+        preview_content: "预览内容"
+        close: "关闭"
+      new:
+        title: "添加文章"
+      edit:
+        title: "编辑文章"
+      index:
+        title: "文章列表"
+        add: "添加文章"
+        operate: "操作"
+        edit: "修改"
+        delete: "删除"
+        delete_confirm: "确定要删除吗？"
+        blank: "赶快来添加吧！"
+      show:
+        created_at1: "创建于"
+    categories:
+      form:
+        save: "保存"
+      new:
+        title: "添加类别"
+      edit:
+        title: "编辑类别"
+      index:
+        title: "类别列表"
+        add: "添加类别"
+        operate: "操作"
+        edit: "修改"
+        delete: "删除"
+        delete_confirm: "确定要删除吗？"
+        blank: "赶快来添加吧！"
+      show:
+        created_at1: "创建于"
+  articles:
+    index:
+      all: "全部文章"
+  categories:
+    index:
+      all: "所有分类"
+    show:
+      article: "文章"
+      created_at: "创建于"
+      blank: "暂时还没有文章"
+  devise:
+    mailer:
+      confirmation_instructions:
+        welcome: "欢迎"
+        complete_sign_up: "请点击下面的链接，完成注册。"
+        click_confirm: "点击确认"
+        tip_info: "本邮件由把酒东风自动发出，请勿直接回复！"
+      reset_password_instructions:
+        hello: "你好"
+        reset_password: "你可以点击以下链接重置密码."
+        tip_info: "如果你没有请求这个请忽略."
+    passwords:
+      edit:
+        forget_password: "忘记密码"
+        new_password: "新密码"
+        confirm_password: "确认密码"
+        reset_password: "重置密码"
+      new:
+        forget_password: "忘记密码"
+        email: "邮箱"
+        captcha: "验证码"
+        reset_password: "重置密码"
+    registrations:
+      new:
+        sign_up: "注册"
+        nick_name: "昵称"
+        phone_number: "电话"
+        email: "邮箱"
+        password: "密码"
+        confirm_password: "确认密码"
+        captcha: "验证码"
+      edit:
+        update_password: "修改密码"
+        current_password: "原始密码"
+        new_password: "密码"
+        password_confirmation: "确认密码"
+        save: "确认"
+    sessions:
+      new:
+        sign_in: "登录"
+        email: "邮箱"
+        password: "密码"
+        captcha: "验证码"
+        keep_sign_in: "记住登录信息"
+    shared:
+      links:
+        forget_password: "忘记密码?"     
+  layouts:
+    application:
+      logo: "把酒东风"
+  shared:
+    footer:
+      my_blog: "这是我的博客,用于平时学习总结"
+      code: "源码地址"
+    header:
+      logo: "把酒与东风"
+      category: "分类"
+      article: "文章"
+      user_center: "个人中心"
+      sign_out: "注销"
+      sign_in: "登录"
+      sign_up: "注册"
+
+  users:
+    show:
+      id: "第"
+      user: "用户"
+      current_role: "当前角色"
+      change_password: "修改密码"
+      base_info: "基本信息"
+      nick_name: "昵称"
+      phone_number: "电话"
+      email: "邮箱"
+      image: "图像"
+      save: "保持"
+  welcomes:
+    index:
+      least_articles: "最近的文章"
+      hot_articles: "最热的文章"
+      all_categories: "所有分类"

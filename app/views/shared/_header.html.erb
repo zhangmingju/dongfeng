@@ -1,13 +1,13 @@
 <nav class="navbar navbar-default" role="navigation">
     <div class="header_login">
       <div class="navbar-header">
-        <%=link_to "把酒与东风", root_path,class:"navbar-brand" %>
+        <%=link_to t(".logo"), root_path,class:"navbar-brand" %>
       </div>
       <div>
         <% if user_signed_in?%>
           <ul class="nav navbar-nav">
-            <li><%=link_to "分类", admin_categories_path %></li>
-            <li><%=link_to "文章", admin_articles_path %></li>
+            <li><%=link_to t(".category"), admin_categories_path %></li>
+            <li><%=link_to t(".article"), admin_articles_path %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
               <li class="dropdown">
@@ -16,19 +16,19 @@
                     <b class="caret"></b>
                   </a>
                   <ul class="dropdown-menu">
-                    <li><%=link_to "个人中心" , user_path(current_user)%></li>
-                    <li><%=link_to "注销",destroy_user_session_path, method: :delete%></li>
+                    <li><%=link_to t(".user_center") , user_path(current_user)%></li>
+                    <li><%=link_to t(".sign_out"),destroy_user_session_path, method: :delete%></li>
                   </ul>
               </li>
           </ul>
         <% else %>
           <ul class="nav navbar-nav">
-            <li><%=link_to "分类", categories_path %></li>
-            <li><%=link_to "文章", articles_path %></li>
+            <li><%=link_to t(".category"), categories_path %></li>
+            <li><%=link_to t(".article"), articles_path %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
-            <li><%=link_to "登录", new_user_session_path%></li>
-            <li><%=link_to "注册", new_user_registration_path%></li>
+            <li><%=link_to t(".sign_in"), new_user_session_path%></li>
+            <li><%=link_to t(".sign_up"), new_user_registration_path%></li>
           </ul>
         <% end %>
       </div>

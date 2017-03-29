@@ -1,6 +1,10 @@
 <h2 class="article_title"><%=@article.name%></h2>
 <p class="pull-right">
-  <span>由<%= @article.user.try(:nick_name) || @article.user.try(:email)%>创建于<%=custome_time_ago(@article.created_at)%></span>
+  <span>
+    <%= @article.user.try(:nick_name) || @article.user.try(:email)%>
+    <%=t('.created_at1')%>
+    <%=custome_time_ago(@article.created_at)%>
+  </span>
 </p>
 <div class="row">
   <div class="col-md-10 col-sm-offset-1">

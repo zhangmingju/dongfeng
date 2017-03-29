@@ -47,6 +47,10 @@ class User < ApplicationRecord
 
   # Override Devise to send mails with async
   def send_devise_notification(notification, *args)
+    LoggerApp.info("    notification: #{notification}")
+    LoggerApp.info("    self: #{self.inspect}")
+    LoggerApp.info("    args: #{args}")
+    LoggerApp.info("    devise_mailer: #{devise_mailer} #{devise_mailer.class}")
     devise_mailer.send(notification, self, *args).deliver_later
   end
 end

@@ -8,11 +8,15 @@
         <span class="user_nick_name"><%= current_user.nick_name%></span>
       </div>
       <div class="panel-body">
-        <p>第<%=current_user.id%>会员</p>
-        <p><%=current_user.created_at%></p>
-        <p>当前角色 <%=user_role(current_user)%></p>
         <p>
-          <%=link_to "修改密码" , edit_user_registration_path%>
+          <%=t(".id")%>
+          <%=current_user.id%>
+          <%=t(".user")%>
+        </p>
+        <p><%=current_user.created_at%></p>
+        <p><%=t(".current_role")%> <%=user_role(current_user)%></p>
+        <p>
+          <%=link_to t(".change_password") , edit_user_registration_path%>
         </p>
       </div>
     </div>
@@ -20,33 +24,33 @@
 
   <div class="col-md-8">
     <ul class="nav nav-tabs">
-      <li class="active"><a data-toggle="tab" href="#home">基本信息</a></li>
+      <li class="active"><a data-toggle="tab" href="#home"><%=t(".base_info")%></a></li>
     </ul>
     <div class="tab-content">
       <div id="home" class="tab-pane fade in active">
         <%= form_for(current_user, as: current_user, url: user_path(current_user), html: { method: :put }) do |f| %>
 
           <div class="form-group form_padding">
-            <%= f.label :nick_name ,"昵称", class:"col-md-2"%>
+            <%= f.label :nick_name ,t(".nick_name"), class:"col-md-2"%>
             <div class="col-md-6">
               <%= f.text_field :nick_name, autofocus: true, class:"form-control"%>
             </div>
           </div>
           <div class="form-group form_padding">
-            <%= f.label :phone_number ,"电话", class:"col-md-2"%>
+            <%= f.label :phone_number ,t(".phone_number"), class:"col-md-2"%>
             <div class="col-md-6">
               <%= f.text_field :phone_number, autofocus: true, class:"form-control" %>
             </div>
           </div>
           <div class="form-group form_padding">
-            <%= f.label :email ,"邮箱", class:"col-md-2"%>
+            <%= f.label :email ,t(".email"), class:"col-md-2"%>
             <div class="col-md-6">
               <%= f.email_field :email, autofocus: true, class:"form-control", disabled:"disabled"%>
             </div>
           </div>
 
           <div class="form-group form_padding">
-            <%= f.label :image ,"图像", class:"col-md-2"%>
+            <%= f.label :image ,t(".image"), class:"col-md-2"%>
             <div class="col-md-6">
                 <%= f.file_field :image, class:"form-control"%>
             </div>
@@ -54,7 +58,7 @@
 
           <div class="form-group form_padding">
             <div class="col-md-2 col-md-offset-3">
-              <%= f.submit "确认", class: 'form-control btn-primary' %>
+              <%= f.submit t(".save"), class: 'form-control btn-primary' %>
             </div>
           </div>
         <% end %>

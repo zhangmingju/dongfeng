@@ -3,7 +3,7 @@
     <div class="col-sm-5 col-sm-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading">
-          最近的文章
+          <%=t(".least_articles")%>
         </div>
         <div class="panel-body">
           <% @least_articles.each do |article| %>
@@ -18,7 +18,7 @@
     <div class="col-sm-5 col-sm-offset-1">
       <div class="panel panel-default">
         <div class="panel-heading">
-          最热的文章
+          <%=t(".hot_articles")%>
         </div>
         <div class="panel-body">
           <% @least_articles.each do |article| %>
@@ -35,7 +35,7 @@
     <div class='col-sm-11 col-sm-offset-1'>
       <div class="panel panel-default">
         <div class="panel-heading">
-          所有分类
+          <%=t(".all_categories")%>
         </div>
         <div class="panel-body">
           <% @categories.each do |category| %>
