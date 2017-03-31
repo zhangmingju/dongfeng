@@ -67,7 +67,7 @@ gem 'carrierwave', '~> 1.0'
 gem 'sidekiq'
 gem 'redis-namespace'
 gem 'redis'
-# gem 'sinatra', github: 'sinatra'
+gem 'sinatra', github: 'sinatra'
 
 gem 'unicorn'
 

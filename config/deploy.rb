@@ -15,8 +15,8 @@ set :rvm_path, '/home/zhang/.rvm/bin/rvm'
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
 # set :shared_dirs, fetch(:shared_dirs, []).push('somedir')
 # set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
-set :shared_dirs, fetch(:shared_dirs, []).push("log")
-set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
+set :shared_dirs, fetch(:shared_dirs, []).push("log","tmp/pids","tmp/sockets")
+set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml','config/unicorn.rb','config/unicorn_init.sh')
 
 
 # This task is the environment that is loaded for all remote run commands, such as
@@ -35,10 +35,18 @@ task :setup do
   command %[chmod g+rx,u+rwx "#{fetch(:deploy_to)}/shared/config"]
 
   command %[touch "#{fetch(:deploy_to)}/shared/config/database.yml"]
-  command %[echo "-----> Be sure to edit 'shared/config/database.yml'."]
 
   command %[touch "#{fetch(:deploy_to)}/shared/config/secrets.yml"]
-  command %[echo "-----> Be sure to edit 'shared/config/secrets.yml'."]
+
+
+  command %[touch "#{fetch(:deploy_to)}/shared/config/unicorn.rb"]
+
+
+  command %[touch "#{fetch(:deploy_to)}/shared/config/unicorn_init.sh"]
+  command "chmod 777 #{fetch(:deploy_to)}/shared/config/unicorn_init.sh"
+
+  command "mkdir -p #{fetch(:deploy_to)}/shared/tmp/pids"
+  command "mkdir -p #{fetch(:deploy_to)}/shared/tmp/sockets"
 
 end
 
@@ -49,8 +57,6 @@ task :deploy do
   deploy do
     # Put things that will set up an empty directory into a fully set-up
     # instance of your project.
-    # command "gem install bundler"
-    # command "gem update bundler"
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
     # command "bundle install"
@@ -63,14 +69,39 @@ task :deploy do
     invoke :'deploy:cleanup'
 
 
-    # on :launch do
-    #   in_path(fetch(:current_path)) do
-    #     command %{mkdir -p tmp/}
-    #     command %{touch tmp/restart.txt}
-    #   end
-    # end
+    on :launch do
+      in_path(fetch(:current_path)) do
+        invoke :'unicorn:restart'
+      end
+    end
   end
 
   # you can use `run :local` to run tasks on local machine before of after the deploy scripts
   # run(:local){ say 'done' }
+end
+
+
+namespace :unicorn do
+  set :unicorn_pid, "#{fetch(:deploy_to)}/tmp/unicorn.dongfeng.pid"
+ 
+  desc "Start unicorn"
+  task :start => :environment do
+    command 'echo "-----> Start Unicorn"'
+    command "cd #{fetch(:deploy_to)}/current && bundle exec unicorn_rails -D -c #{fetch(:deploy_to)}/current/config/unicorn.rb"
+  end
+ 
+  desc "Stop unicorn"
+  task :stop do
+    command 'echo "-----> Stop Unicorn"'
+    command %{
+      test -s "#{fetch(:unicorn_pid)}" && kill -QUIT `cat "#{fetch(:unicorn_pid)}"` && rm -rf "#{fetch(:unicorn_pid)}" && echo "Stop Ok" && exit 0
+      echo >&2 "Not running"
+    }
+  end
+ 
+  desc "Restart unicorn using 'upgrade'"
+  task :restart => :environment do
+    invoke 'unicorn:stop'
+    invoke 'unicorn:start'
+  end
 end
