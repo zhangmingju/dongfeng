@@ -59,7 +59,7 @@ task :deploy do
     # instance of your project.
     invoke :'git:clone'
     invoke :'deploy:link_shared_paths'
-    # command 'bundle install --without development test --path "vendor/bundle" --deployment'
+    command 'bundle install'
 
     invoke :'bundle:install'
     # 第一次的时候需要创建数据库
