@@ -1,3 +1,15 @@
+GIT
+  remote: https://github.com/sinatra/sinatra.git
+  revision: 949e62b2b37e1d58fc226b56ed2c6af2504d279f
+  specs:
+    rack-protection (2.0.0.rc2)
+      rack
+    sinatra (2.0.0.rc2)
+      mustermann (~> 1.0)
+      rack (~> 2.0)
+      rack-protection (= 2.0.0.rc2)
+      tilt (~> 2.0)
+
 GEM
   remote: https://ruby.taobao.org/
   specs:
@@ -123,6 +135,7 @@ GEM
     multi_json (1.12.1)
     multi_xml (0.6.0)
     multipart-post (2.0.0)
+    mustermann (1.0.0)
     mysql2 (0.4.5)
     nio4r (2.0.0)
     nokogiri (1.7.1)
@@ -146,8 +159,6 @@ GEM
     orm_adapter (0.5.0)
     puma (3.8.2)
     rack (2.0.1)
-    rack-protection (1.5.3)
-      rack
     rack-test (0.6.3)
       rack (>= 1.0)
     rails (5.0.2)
@@ -270,6 +281,7 @@ DEPENDENCIES
   rucaptcha
   sass-rails (~> 5.0)
   sidekiq
+  sinatra!
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
