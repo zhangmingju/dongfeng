@@ -4,8 +4,10 @@ require 'mina/bundler'
 require 'mina/rvm'
 
 set :application_name, 'dongfeng'
-set :domain, 'bajiudongfeng.xyz'
+# set :domain, 'bajiudongfeng.xyz'
+set :domain, '139.196.124.252'
 set :deploy_to, '/home/zhang/dongfeng'
+
 set :repository, 'https://github.com/zhangmingju/dongfeng.git'
 set :branch, 'master'
 set :user, 'zhang'
@@ -85,7 +87,7 @@ namespace :unicorn do
   desc "Start unicorn"
   task :start => :environment do
     command 'echo "-----> Start Unicorn"'
-    command "cd #{fetch(:deploy_to)}/current && bundle exec unicorn_rails -D -c #{fetch(:deploy_to)}/current/config/unicorn.rb"
+    command "cd #{fetch(:deploy_to)}/current && bundle exec unicorn_rails -D -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E production"
   end
  
   desc "Stop unicorn"
