@@ -82,7 +82,7 @@ end
 
 
 namespace :unicorn do
-  set :unicorn_pid, "#{fetch(:deploy_to)}/tmp/unicorn.dongfeng.pid"
+  set :unicorn_pid, "#{fetch(:deploy_to)}/current/tmp/unicorn.dongfeng.pid"
  
   desc "Start unicorn"
   task :start => :environment do
