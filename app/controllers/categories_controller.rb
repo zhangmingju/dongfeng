@@ -5,6 +5,6 @@ class CategoriesController < ApplicationController
   end
   def show
     @category = Category.friendly.find(params[:id])
-    @articles = @category.articles.default_order.page(params[:page])
+    @articles = @category.articles.publish.default_order.page(params[:page])
   end
 end

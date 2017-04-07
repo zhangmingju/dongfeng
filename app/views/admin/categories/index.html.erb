@@ -22,7 +22,7 @@
           <% @categories.each do |category|%>
             <tr>
               <td class="col-sm-2"><%=category.id%></td>
-              <td class="col-sm-2"><%=category.name%></td>
+              <td class="col-sm-2"><%=link_to category.name, category_path(category)%></td>
               <td class="col-sm-2"><%=category.desc%></td>
               <td><%=image_tag category.image_url,size:"80x80"%></td>
               <td class="col-sm-2"><%=category.articles_count%></td>
@@ -41,7 +41,7 @@
     </div>
   <% else %>
     <div class="col-sm-offset-2">
-      <h2><=t('.blank')%></h2>
+      <h2><%=t('.blank')%></h2>
     </div>
   <% end %>
 </div>

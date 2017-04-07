@@ -8,6 +8,6 @@ class UserImageWorker
     rescue Exception => e
       LoggerApp.info("  #{self.class.name}.#{__method__}  e.message: #{e.message}")
     end
-
   end
+  
 end

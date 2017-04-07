@@ -16,6 +16,9 @@ zh-CN:
         operate: "操作"
         edit: "修改"
         delete: "删除"
+        publish: "发布"
+        unpublish: "未发布"
+        publish_issue: "发布失败"
         delete_confirm: "确定要删除吗？"
         blank: "赶快来添加吧！"
       show:
@@ -30,6 +33,24 @@ zh-CN:
       index:
         title: "类别列表"
         add: "添加类别"
+        operate: "操作"
+        edit: "修改"
+        delete: "删除"
+        delete_confirm: "确定要删除吗？"
+        blank: "赶快来添加吧！"
+      show:
+        created_at1: "创建于"
+    images:
+      form:
+        save: "保存"
+        name: "图片"
+      new:
+        title: "添加图片"
+      edit:
+        title: "编辑图片"
+      index:
+        title: "图片列表"
+        add: "添加图片"
         operate: "操作"
         edit: "修改"
         delete: "删除"
@@ -105,6 +126,7 @@ zh-CN:
       logo: "把酒与东风"
       category: "分类"
       article: "文章"
+      article_images: "文章图片"
       user_center: "个人中心"
       sign_out: "注销"
       sign_in: "登录"

@@ -4,6 +4,7 @@
     <%= @article.user.try(:nick_name) || @article.user.try(:email)%>
     <%=t('.created_at1')%>
     <%=custome_time_ago(@article.created_at)%>
+    <%=@article.read_count%><%=t(".hits",:default => "hits")%>
   </span>
 </p>
 <div class="row">

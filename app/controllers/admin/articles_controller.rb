@@ -1,12 +1,21 @@
 class Admin::ArticlesController < Admin::AdminController
   layout 'application'
-  before_action :set_article,only:[:show,:edit,:update,:destroy]
+  before_action :set_article,only:[:show,:edit,:update,:destroy,:publish]
 
   def index
     @articles = Article.includes(:user,:category).default_order.page(params[:page])
   end
 
   def show
+  end
+
+  def publish
+    @article.publish_state = 1
+    if @article.save
+      redirect_to admin_articles_path
+    else
+      redirect_to admin_articles_path, notice: I18n.t("admin.articles.index.publish_issue")
+    end
   end
 
   def new

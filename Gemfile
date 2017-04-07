@@ -84,4 +84,7 @@ gem 'kaminari'
 gem 'rolify'
 gem 'cancan'
 
+#deploy
 gem 'mina', '~> 1.0', '>= 1.0.6'
+gem 'mina-sidekiq'
+gem 'mina-unicorn', :require => false

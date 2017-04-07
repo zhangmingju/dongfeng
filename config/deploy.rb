@@ -2,22 +2,24 @@ require 'mina/rails'
 require 'mina/git'
 require 'mina/bundler'
 require 'mina/rvm'
+require 'mina_sidekiq/tasks'
+require 'mina/unicorn'
 
 set :application_name, 'dongfeng'
 # set :domain, 'bajiudongfeng.xyz'
 set :domain, '139.196.124.252'
 set :deploy_to, '/home/zhang/dongfeng'
-
 set :repository, 'https://github.com/zhangmingju/dongfeng.git'
 set :branch, 'master'
 set :user, 'zhang'
 set :rvm_path, '/home/zhang/.rvm/bin/rvm'
+set :shared_paths, ['sockets','pids']
+set :unicorn_pid, '/home/zhang/dongfeng/current/pids/unicorn.dongfeng.pid'
+
 
 
 # shared dirs and files will be symlinked into the app-folder by the 'deploy:link_shared_paths' step.
-# set :shared_dirs, fetch(:shared_dirs, []).push('somedir')
-# set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml')
-set :shared_dirs, fetch(:shared_dirs, []).push("log","tmp/pids","tmp/sockets")
+set :shared_dirs, fetch(:shared_dirs, []).push("log","pids","sockets")
 set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml','config/unicorn.rb','config/unicorn_init.sh')
 
 
@@ -31,25 +33,13 @@ end
 task :setup do
 
   command "mkdir -p #{fetch(:deploy_to)}/shared/log"
-  command "chmod g+rx,u+rwx #{fetch(:deploy_to)}/shared/log"
-
-  command %[mkdir -p "#{fetch(:deploy_to)}/shared/config"]
-  command %[chmod g+rx,u+rwx "#{fetch(:deploy_to)}/shared/config"]
+  command "mkdir -p #{fetch(:deploy_to)}/shared/config"
+  command "mkdir -p #{fetch(:deploy_to)}/shared/pids"
+  command "mkdir -p #{fetch(:deploy_to)}/shared/sockets"
 
   command %[touch "#{fetch(:deploy_to)}/shared/config/database.yml"]
-
   command %[touch "#{fetch(:deploy_to)}/shared/config/secrets.yml"]
-
-
   command %[touch "#{fetch(:deploy_to)}/shared/config/unicorn.rb"]
-
-
-  command %[touch "#{fetch(:deploy_to)}/shared/config/unicorn_init.sh"]
-  command "chmod 777 #{fetch(:deploy_to)}/shared/config/unicorn_init.sh"
-
-  command "mkdir -p #{fetch(:deploy_to)}/shared/tmp/pids"
-  command "mkdir -p #{fetch(:deploy_to)}/shared/tmp/sockets"
-
 end
 
 desc "Deploys the current version to the server."
@@ -68,40 +58,10 @@ task :deploy do
     invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
-
     on :launch do
-      in_path(fetch(:current_path)) do
-        invoke :'unicorn:restart'
-      end
+      invoke :'unicorn:restart'
+      invoke :'sidekiq:restart'
     end
   end
-
-  # you can use `run :local` to run tasks on local machine before of after the deploy scripts
-  # run(:local){ say 'done' }
 end
 
-
-namespace :unicorn do
-  set :unicorn_pid, "#{fetch(:deploy_to)}/current/tmp/unicorn.dongfeng.pid"
- 
-  desc "Start unicorn"
-  task :start => :environment do
-    command 'echo "-----> Start Unicorn"'
-    command "cd #{fetch(:deploy_to)}/current && bundle exec unicorn_rails -D -c #{fetch(:deploy_to)}/current/config/unicorn.rb -E production"
-  end
- 
-  desc "Stop unicorn"
-  task :stop do
-    command 'echo "-----> Stop Unicorn"'
-    command %{
-      test -s "#{fetch(:unicorn_pid)}" && kill -QUIT `cat "#{fetch(:unicorn_pid)}"` && rm -rf "#{fetch(:unicorn_pid)}" && echo "Stop Ok" && exit 0
-      echo >&2 "Not running"
-    }
-  end
- 
-  desc "Restart unicorn using 'upgrade'"
-  task :restart => :environment do
-    invoke 'unicorn:stop'
-    invoke 'unicorn:start'
-  end
-end

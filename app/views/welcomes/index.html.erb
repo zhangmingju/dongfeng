@@ -21,7 +21,7 @@
           <%=t(".hot_articles")%>
         </div>
         <div class="panel-body">
-          <% @least_articles.each do |article| %>
+          <% @hot_articles.each do |article| %>
             <p>
               <span><%= link_to article.name,article_path(article)%></span>
               <span class="pull-right"><%=custome_time_ago(article.created_at)%></span>

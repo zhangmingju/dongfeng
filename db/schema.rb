@@ -10,17 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170327124452) do
+ActiveRecord::Schema.define(version: 20170406121354) do
 
   create_table "articles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string   "name"
-    t.text     "content",      limit: 65535
+    t.text     "content",       limit: 65535
     t.string   "slug"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                              null: false
+    t.datetime "updated_at",                              null: false
     t.integer  "category_id"
     t.integer  "user_id"
-    t.text     "content_html", limit: 65535
+    t.text     "content_html",  limit: 65535
+    t.integer  "read_count",                  default: 0
+    t.integer  "publish_state",               default: 0
     t.index ["slug"], name: "index_articles_on_slug", unique: true, using: :btree
   end
 

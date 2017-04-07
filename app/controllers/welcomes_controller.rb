@@ -1,9 +1,9 @@
 class WelcomesController < ApplicationController
   layout 'application'
   def index
-    @least_articles = Article.default_order.limit(10)
-    @hot_articles = Article.default_order.limit(10)
-    @categories = Category.includes(:image).all
+    @least_articles = Article.publish.default_order.limit(10)
+    @hot_articles = Article.publish.read_count_order.limit(10)
+    @categories = Category.includes(:image)
   end
 
   def notice

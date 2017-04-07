@@ -33,7 +33,7 @@ class Ability
     if user.has_role? :admin
         can :manage, :all
     else
-        can [:update,:destroy], Article, :id=> article_ids
+        can [:update,:destroy,:publish], Article, :id=> article_ids
     end
   end
 end
