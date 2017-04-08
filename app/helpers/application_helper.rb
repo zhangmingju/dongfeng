@@ -15,6 +15,6 @@ module ApplicationHelper
   end
 
   def user_role(user)
-    user.roles.first.name || "普通用户"
+    user.roles.first.try(:name) || "普通用户"
   end
 end

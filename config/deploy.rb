@@ -55,7 +55,7 @@ task :deploy do
     # 第一次的时候需要创建数据库
     # invoke :'rails:db_create'
     invoke :'rails:db_migrate'
-    invoke :'rails:assets_precompile'
+    # invoke :'rails:assets_precompile'
     invoke :'deploy:cleanup'
 
     on :launch do
