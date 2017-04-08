@@ -13,7 +13,7 @@ Role.create!([
 role = Role.first
 
 
-user = User.new(email: 'admin@yesqin.com',password: '11111111',password_confirmation: '11111111',nick_name:"admin",phone_number:"admin")
+user = User.new(email: 'admin@qq.com',password: '11111111',password_confirmation: '11111111',nick_name:"admin",phone_number:"admin")
 user.skip_confirmation!
 user.save
 user.add_role(role.name)
