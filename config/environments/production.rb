@@ -85,4 +85,27 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.action_mailer.default_url_options = { host: '139.196.124.252', port: 8080 }
+  #config.action_mailer.delivery_method = :smtp
+  #qq邮箱配置注意要开通smtp服务才正常发送邮件
+  # config.action_mailer.smtp_settings = {
+  #   :address => "smtp.qq.com",
+  #   :port => 587,
+  #   :domain => "qq.com",
+  #   :user_name => "bright_yesqin@qq.com", #你的邮箱
+  #   :password => "hnegrptkqbcmdfjh",
+  #   :authentication => :login,
+  #   :enable_starttls_auto => true
+  # }
+  #阿里企业邮箱配置
+  config.action_mailer.smtp_settings = {
+    :address => "smtp.mxhichina.com",
+    :port => 587,
+    :domain => "qiye.aliyun.com/alimail",
+    :user_name => "info@yesqin.com", #你的邮箱
+    :password => "Yesqin@2015",
+    :authentication => "plain",
+    :enable_starttls_auto => true
+  }
+
+  config.action_mailer.default :charset => "utf-8"
 end
