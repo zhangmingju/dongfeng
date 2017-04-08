@@ -9,7 +9,7 @@ class Ability
         can :manage, :all
     else
         can [:update,:destroy,:publish], Article, :id=> article_ids
-        can [:update,:destroy,:publish], Image, :id=> image_ids
+        can [:update,:destroy], Image, :id=> image_ids
     end
   end
 end
