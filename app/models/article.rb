@@ -14,6 +14,7 @@ class Article < ApplicationRecord
   def get_user
     self.user.try(:nick_name) || self.user.try(:email)
   end
+  
   private 
 
   def fill_html_content

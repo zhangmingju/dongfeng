@@ -1,0 +1,46 @@
+<h2 class="col-sm-offset-5">
+  <span><%=t('.title')%><span>
+</h2>
+<div class="container">
+  <% if can? :create, Image %>
+    <p><%= link_to  t('.add'), new_admin_image_path, class: ' btn btn-success'%></p>
+  <% end %>
+  <% if @images.present? %>
+    <div class = "panel panel-default">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>id</th>
+            <th>url</th>
+            <th>image</th>
+            <th>author</th>
+            <th><%=t('.operate')%></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @images.each do |image|%>
+            <tr>
+              <td class="col-sm-1"><%=image.id%></td>
+              <td class="col-sm-2"><%=image.name.url%></td>
+              <td class="col-sm-2"><%=image_tag image.name.url,size:"80x80"%></td>
+              <td class="col-sm-2"><%=image.get_user%></td>
+              <td class="col-sm-2">
+              <% if can? :update, image %>
+                <%= link_to t('.edit'),edit_admin_image_path(image)%>|
+              <% end %>
+              <% if can? :destroy, image%>
+                <%= link_to t('.delete'), admin_image_path(image), method: :delete, data: { confirm: t('.delete_confirm') }%> 
+              <% end%>
+              </td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <%= paginate @images %>
+  <% else %>
+    <div class="col-sm-offset-2">
+      <h2><%=t('.blank')%></h2>
+    </div>
+  <% end %>
+</div>

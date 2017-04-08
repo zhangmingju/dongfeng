@@ -7,6 +7,7 @@ class User < ApplicationRecord
          :confirmable, :omniauthable, :omniauth_providers => [:github]
   has_one :image, as: :target
   has_many :articles
+  has_many :images
 
   validates :phone_number, uniqueness: true
   validates :nick_name, presence: true
