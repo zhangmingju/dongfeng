@@ -5,13 +5,11 @@ body {
   color: #333333;
   background-color: #ffffff;
 }
-
 a:hover,
 a:focus {
   color: #2a6496;
   text-decoration: underline;
 }
-
 a:focus {
   outline: thin dotted #333;
   outline: 5px auto -webkit-focus-ring-color;
@@ -78,6 +76,6 @@ a:focus {
   text-align: center;
   padding:20px;
 }
-.test{
+.test1{
   
 }
