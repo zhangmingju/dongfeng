@@ -33,7 +33,7 @@
               <% if can? :destroy,article%>
                 <%= link_to t('.delete'), admin_article_path(article), method: :delete, data: { confirm: t('.delete_confirm') }%> |
               <% end %>
-              <% if can? :publish,article && article.publish_state.to_s == "0" %>
+              <% if (can? :publish,article) && (article.publish_state.to_s == "0") %>
                 <%= link_to t(".publish"),publish_admin_article_path(article)%>
               <% end %>
               </td>
