@@ -40,6 +40,7 @@ task :deploy do
     invoke :'deploy:cleanup'
 
     on :launch do
+      # 注意pid路径问题
       invoke :'unicorn:restart'
       invoke :'sidekiq:restart'
     end

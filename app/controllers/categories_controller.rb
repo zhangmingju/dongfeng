@@ -1,7 +1,7 @@
 class CategoriesController < ApplicationController
   layout 'application'
   def index
-    @categories = Category.all
+    @categories = Category.includes(:image)
   end
   def show
     @category = Category.friendly.find(params[:id])
