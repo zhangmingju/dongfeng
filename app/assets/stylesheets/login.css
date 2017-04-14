@@ -56,7 +56,7 @@ a:focus {
 .article_preview{
   position: absolute;
   left:700px;
-  top:767px;
+  top:773px;
 }
 .article_preivew_modal{
   width: 1200px;
@@ -75,7 +75,4 @@ a:focus {
 .footer_info{
   text-align: center;
   padding:20px;
-}
-.test1{
-  
 }
