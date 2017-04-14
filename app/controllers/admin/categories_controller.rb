@@ -4,7 +4,7 @@ class Admin::CategoriesController < Admin::AdminController
   load_and_authorize_resource :only => [:new, :edit]
 
   def index
-    @categories = Category.all.default_order
+    @categories = Category.includes(:image).default_order
   end
 
   def show
@@ -31,6 +31,7 @@ class Admin::CategoriesController < Admin::AdminController
 
   def update
     if @category.update(category_params)
+      ImageUtil.image_upload(params[:category][:image],"Category",@category.id) if params[:category][:image].present?
       redirect_to admin_categories_path
     else
       render 'edit' 
