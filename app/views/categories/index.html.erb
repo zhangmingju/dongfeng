@@ -2,7 +2,7 @@
   <div class='col-sm-11 col-sm-offset-1'>
     <div class="panel panel-default">
       <div class="panel-heading">
-        <%=t('.all')%>
+        <%=t('.all')%>(<%=@categories.size%>)
       </div>
       <div class="panel-body">
         <% @categories.each do |category| %>
