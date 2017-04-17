@@ -1,14 +1,17 @@
-<h2 class="article_title"><%=@article.name%></h2>
-<p class="pull-right">
-  <span>
-    <%= @article.user.try(:nick_name) || @article.user.try(:email)%>
-    <%=t('.created_at1')%>
-    <%=custome_time_ago(@article.created_at)%>
-    <%=@article.read_count%><%=t(".hits",:default => "hits")%>
-  </span>
-</p>
-<div class="row">
-  <div class="col-md-10 col-sm-offset-1">
-    <%=raw @article.content_html%>
+<% cache @article do%>
+  <h2 class="article_title"><%=@article.name%></h2>
+  <p class="pull-right">
+    <span>
+      <%= @article.user.try(:nick_name) || @article.user.try(:email)%>
+      <%=t('.created_at1')%>
+      <%=custome_time_ago(@article.created_at)%>
+      <%=@article.read_count%><%=t(".hits",:default => "hits")%>
+    </span>
+  </p>
+  <div class="row">
+    <div class="col-md-10 col-sm-offset-1">
+      <%=raw @article.content_html%>
+    </div>
   </div>
-</div>
+<% end %>
+

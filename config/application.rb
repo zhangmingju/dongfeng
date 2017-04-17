@@ -15,5 +15,7 @@ module Dongfeng
     config.eager_load_paths +=  %W(#{config.root}/lib)
     config.eager_load_paths << Rails.root.join('app', 'form_builders')
     config.active_job.queue_adapter = :sidekiq
+    # config.middleware.insert_before "Rack::Sendfile", "MyMiddleware"
+    # config.middleware.use "Rack::Hello"
   end
 end
