@@ -4,16 +4,18 @@
       <div class="panel-heading">
         <%=t('.all')%>(<%=@categories.size%>)
       </div>
-      <div class="panel-body">
-        <% @categories.each do |category| %>
-          <div class="pull-left col-sm-3">
-            <a href="<%=category_path(category)%>">
-              <p><%=image_tag category.image_url,size:"150x150"%></p>
-              <p class="index_category"><%=category.name%>(<%=category.articles_count%>)</p>
-            </a> 
-          </div>
-        <% end %>
-      </div>
+      <% cache @categories do%>
+        <div class="panel-body">
+          <% @categories.each do |category| %>
+              <div class="pull-left col-sm-3">
+                <a href="<%=category_path(category)%>">
+                  <p><%=image_tag category.image_url,size:"150x150"%></p>
+                  <p class="index_category"><%=category.name%>(<%=category.articles_count%>)</p>
+                </a> 
+              </div>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

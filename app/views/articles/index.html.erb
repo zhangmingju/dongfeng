@@ -2,17 +2,22 @@
   <div class="col-sm-10 col-sm-offset-1">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <%=t('.all')%>(<%=Article.count%>)
-      </div>
-      <div class="panel-body">
-        <% @articles.each do |article| %>
-          <p>
-            <span><%= link_to article.name,article_path(article)%></span>
-            <span class="pull-right"><%=custome_time_ago(article.created_at)%></span>
-          </p>
+        <%=t('.all')%>
+        <% cache do%> 
+          (<%=@article_count%>)
         <% end %>
-        <%=paginate @articles%>
       </div>
+      <% cache @articles do %>
+        <div class="panel-body">
+          <% @articles.each do |article| %>
+              <p>
+                <span><%= link_to article.name,article_path(article)%></span>
+                <span class="pull-right"><%=custome_time_ago(article.created_at)%></span>
+              </p>
+            <% end %>
+          <%=paginate @articles%>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

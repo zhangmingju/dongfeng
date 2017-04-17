@@ -8,5 +8,6 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.default_order.page(params[:page])
+    @article_count = Article.count
   end
 end
