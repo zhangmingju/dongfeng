@@ -8,6 +8,8 @@ class ArticlesController < ApplicationController
 
   def index
     @articles = Article.default_order.page(params[:page])
-    @article_count = Article.count
+    @article_count = Rails.cache.fetch("articles_count",expires_in: 5.minutes) do 
+      Article.count
+    end
   end
 end

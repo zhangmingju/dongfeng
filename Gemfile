@@ -69,6 +69,9 @@ gem 'carrierwave', '~> 1.0'
 gem 'sidekiq'
 gem 'redis-namespace'
 gem 'redis'
+# gem 'redis-store'
+gem 'redis-rails', '~> 5'
+
 gem 'sinatra', github: 'sinatra'
 
 gem 'unicorn'
@@ -92,5 +95,8 @@ gem 'mina-unicorn', :require => false
 
 #monitor
 gem 'rack-mini-profiler', require: false
+#memcached
+gem 'dalli'
+
 
 

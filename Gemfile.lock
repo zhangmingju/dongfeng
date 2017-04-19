@@ -74,6 +74,7 @@ GEM
     coffee-script-source (1.12.2)
     concurrent-ruby (1.0.5)
     connection_pool (2.2.1)
+    dalli (2.7.6)
     debug_inspector (0.0.2)
     devise (4.2.1)
       bcrypt (~> 3.0)
@@ -208,8 +209,24 @@ GEM
       ffi (>= 0.5.0)
     redcarpet (3.4.0)
     redis (3.3.3)
+    redis-actionpack (5.0.1)
+      actionpack (>= 4.0, < 6)
+      redis-rack (>= 1, < 3)
+      redis-store (>= 1.1.0, < 1.4.0)
+    redis-activesupport (5.0.2)
+      activesupport (>= 3, < 6)
+      redis-store (~> 1.3.0)
     redis-namespace (1.5.3)
       redis (~> 3.0, >= 3.0.4)
+    redis-rack (2.0.2)
+      rack (>= 1.5, < 3)
+      redis-store (>= 1.2, < 1.4)
+    redis-rails (5.0.2)
+      redis-actionpack (>= 5.0, < 6)
+      redis-activesupport (>= 5.0, < 6)
+      redis-store (>= 1.2, < 2)
+    redis-store (1.3.0)
+      redis (>= 2.2)
     responders (2.3.0)
       railties (>= 4.2.0, < 5.1)
     rolify (5.1.0)
@@ -274,6 +291,7 @@ DEPENDENCIES
   cancan
   carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
+  dalli
   devise
   devise-async
   friendly_id (~> 5.1.0)
@@ -296,6 +314,7 @@ DEPENDENCIES
   redcarpet (~> 3.4)
   redis
   redis-namespace
+  redis-rails (~> 5)
   rolify
   rucaptcha
   sass-rails (~> 5.0)

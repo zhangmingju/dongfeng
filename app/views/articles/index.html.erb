@@ -2,10 +2,7 @@
   <div class="col-sm-10 col-sm-offset-1">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <%=t('.all')%>
-        <% cache do%> 
-          (<%=@article_count%>)
-        <% end %>
+        <%=t('.all')%>(<%=@article_count%>)
       </div>
       <% cache @articles do %>
         <div class="panel-body">
