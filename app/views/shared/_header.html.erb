@@ -26,6 +26,13 @@
           <ul class="nav navbar-nav">
             <li><%=link_to t(".category"), categories_path %></li>
             <li><%=link_to t(".article"), articles_path %></li>
+            <li>
+              <%= form_tag articles_path,method: "get",class:"navbar-form",role:"search" do %>
+                <div class="form-group">
+                  <%= text_field_tag 'search',nil,placeholder:"请搜索标题或者内容",class:"form-control"%>
+                </div>
+              <% end %>
+            </li>
           </ul>
           <ul class="nav navbar-nav navbar-right">
             <li><%=link_to t(".sign_in"), new_user_session_path%></li>

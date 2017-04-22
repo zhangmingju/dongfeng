@@ -98,5 +98,7 @@ gem 'rack-mini-profiler', require: false
 #memcached
 gem 'dalli'
 
+gem 'ransack'
+
 
 
