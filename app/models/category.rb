@@ -8,6 +8,7 @@ class Category < ApplicationRecord
   scope :default_order, -> { order("created_at DESC") }
 
   def image_url
-    self.image.present? ? self.image.name.url : Image.default_image
+    image_url = self.image.name.url if self.image.present?
+    Image.default_image unless File.exist?(image_url)
   end
 end

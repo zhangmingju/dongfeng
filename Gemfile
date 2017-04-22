@@ -50,7 +50,10 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem 'pry-byebug'
+  gem 'rspec'
+  gem 'rspec-rails'
 end
+
 gem 'listen', '~> 3.0.5'
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -99,6 +102,3 @@ gem 'rack-mini-profiler', require: false
 gem 'dalli'
 
 gem 'ransack'
-
-
-
