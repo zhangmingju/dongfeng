@@ -18,7 +18,14 @@ Rails.application.configure do
 
     # config.cache_store = :memory_store
     # config.cache_store = :mem_cache_store
-    config.cache_store = :redis_store, 'redis://localhost:6379/0/cache_store', { expires_in: 90.minutes }
+    config.cache_store = :redis_store, {
+      host: Settings.redis.host,
+      port: Settings.redis.port,
+      db: Settings.redis.db,
+      password: Settings.redis.dev.password,
+      namespace: Settings.redis.namespace.fragement
+    }, { expires_in: 90.minutes }
+
     config.public_file_server.headers = {
       'Cache-Control' => 'public, max-age=172800'
     }
@@ -53,28 +60,28 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.action_mailer.default_url_options = { host: 'localhost', port: 8088 }
+  config.action_mailer.default_url_options = { host: Settings.email.dev.host, port: Settings.email.dev.port }
+
   #config.action_mailer.delivery_method = :smtp
   #qq邮箱配置注意要开通smtp服务才正常发送邮件
   # config.action_mailer.smtp_settings = {
-  #   :address => "smtp.qq.com",
-  #   :port => 587,
-  #   :domain => "qq.com",
-  #   :user_name => "bright_yesqin@qq.com", #你的邮箱
-  #   :password => "hnegrptkqbcmdfjh",
+  #   :address => Settings.email.qq.address,
+  #   :port => Settings.email.qq.port,
+  #   :domain => Settings.email.qq.domain,
+  #   :user_name => Settings.email.qq.user_name, #你的邮箱
+  #   :password => Settings.email.qq.password,
   #   :authentication => :login,
   #   :enable_starttls_auto => true
   # }
   #阿里企业邮箱配置
   config.action_mailer.smtp_settings = {
-    :address => "smtp.mxhichina.com",
-    :port => 587,
-    :domain => "qiye.aliyun.com/alimail",
-    :user_name => "info@yesqin.com", #你的邮箱
-    :password => "Yesqin@2015",
+    :address => Settings.email.aliyun.address,
+    :port => Settings.email.aliyun.port,
+    :domain => Settings.email.aliyun.domain,
+    :user_name => Settings.email.aliyun.user_name, #你的邮箱
+    :password => Settings.email.aliyun.password,
     :authentication => "plain",
     :enable_starttls_auto => true
   }
-
   config.action_mailer.default :charset => "utf-8"
 end

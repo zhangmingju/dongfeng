@@ -52,13 +52,12 @@ Rails.application.configure do
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
   config.cache_store = :redis_store, {
-      host: "localhost",
-      port: 6379,
-      db: 0,
-      password: "p2d-e3as*Afa",
-      namespace: "redis_store"
-    }, 
-    { expires_in: 90.minutes }
+    host: Settings.redis.host,
+    port: Settings.redis.port,
+    db: Settings.redis.db,
+    password: Settings.redis.pro.password,
+    namespace: Settings.redis.namespace.fragement
+  }, { expires_in: 90.minutes }
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
@@ -92,25 +91,25 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.default_url_options = { host: '139.196.124.252', port: 8080 }
+  config.action_mailer.default_url_options = { host: Settings.email.pro.host, port: Settings.email.pro.port }
   #config.action_mailer.delivery_method = :smtp
   #qq邮箱配置注意要开通smtp服务才正常发送邮件
   # config.action_mailer.smtp_settings = {
-  #   :address => "smtp.qq.com",
-  #   :port => 587,
-  #   :domain => "qq.com",
-  #   :user_name => "bright_yesqin@qq.com", #你的邮箱
-  #   :password => "hnegrptkqbcmdfjh",
+  #   :address => Settings.email.qq.address,
+  #   :port => Settings.email.qq.port,
+  #   :domain => Settings.email.qq.domain,
+  #   :user_name => Settings.email.qq.user_name, #你的邮箱
+  #   :password => Settings.email.qq.password,
   #   :authentication => :login,
   #   :enable_starttls_auto => true
   # }
   #阿里企业邮箱配置
   config.action_mailer.smtp_settings = {
-    :address => "smtp.mxhichina.com",
-    :port => 587,
-    :domain => "qiye.aliyun.com/alimail",
-    :user_name => "info@yesqin.com", #你的邮箱
-    :password => "Yesqin@2015",
+    :address => Settings.email.aliyun.address,
+    :port => Settings.email.aliyun.port,
+    :domain => Settings.email.aliyun.domain,
+    :user_name => Settings.email.aliyun.user_name, #你的邮箱
+    :password => Settings.email.aliyun.password,
     :authentication => "plain",
     :enable_starttls_auto => true
   }

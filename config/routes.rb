@@ -1,5 +1,6 @@
 require 'sidekiq/web'
 Rails.application.routes.draw do
+  mount API => '/'
   devise_for :users, controllers: { 
     sessions: 'users/sessions',
     registrations: 'users/registrations',

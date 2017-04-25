@@ -12,7 +12,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'info@yesqin.com'
+  config.mailer_sender = Settings.email.aliyun.user_name
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -249,7 +249,7 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', scope: 'user,public_repo'
-  config.omniauth :github, 'd4ca84a5d49d4e8b9541', 'b57a01f97b65f9fb3237027a0bbafdb79600c73c'
+  config.omniauth :github, Settings.github.app_id, Settings.github.app_secret
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or

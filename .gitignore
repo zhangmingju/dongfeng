@@ -24,3 +24,6 @@
 /public/assets/*
 /public/system/*
 /test
+
+config/settings.yml
+
