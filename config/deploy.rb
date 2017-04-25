@@ -13,7 +13,7 @@ set :user, 'zhang'
 set :rvm_path, '/home/zhang/.rvm/bin/rvm'
 
 set :shared_dirs, fetch(:shared_dirs, []).push('tmp/sockets', 'tmp/pids','public/uploads')
-set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml','config/unicorn.rb')
+set :shared_files, fetch(:shared_files, []).push('config/database.yml', 'config/secrets.yml','config/unicorn.rb','config/settings.yml')
 
 task :environment do
   invoke :'rvm:use', 'ruby-2.3.0@global'

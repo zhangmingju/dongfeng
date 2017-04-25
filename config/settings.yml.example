@@ -1,0 +1,37 @@
+# send email
+email:
+  dev:
+    host: 'localhost'
+    port: '8088'
+  pro: 
+    host: 'bajiudongfeng.xyz'
+    port: '8080'
+  aliyun:
+    address: "smtp.mxhichina.com"
+    port: 587
+    domain: "qiye.aliyun.com/alimail"
+    user_name: "info@yesqin.com" #你的邮
+  qq:
+    address: "smtp.qq.com"
+    port: 587
+    domain: "qq.com"
+    user_name: "bright_yesqin@qq.com" #你的邮箱
+    password: "hnegrptkqbcmdfjh"
+
+# redis
+redis:
+  host: 'localhost'
+  port: 6379
+  db: 0
+  namespace:
+    sidekiq: 'sidekiq'
+    fragement: 'redis_store'
+  pro:
+    password: 'p2d-e3as*Afa'
+  dev:
+    password: 'redis123'
+
+# github
+github:
+  app_id: 'd4ca84a5d49d4e8b9541'
+  app_secret: 'b57a01f97b65f9fb3237027a0bbafdb79600c73c'
