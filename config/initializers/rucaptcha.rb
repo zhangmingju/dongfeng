@@ -23,7 +23,7 @@ RuCaptcha.configure do
     host: Settings.redis.host,
     port: Settings.redis.port,
     db: Settings.redis.db,
-    password: Settings.redis.dev.password,
+    password: eval("Settings.redis.#{Rails.env[0,3]}.password"),
     namespace: Settings.redis.namespace.rucaptcha
   }
 end
