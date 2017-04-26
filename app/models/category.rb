@@ -9,6 +9,11 @@ class Category < ApplicationRecord
 
   def image_url
     image_url = self.image.name.url if self.image.present?
-    Image.default_image unless File.exist?(image_url)
+    upload_path  = Rails.root.join("public").to_s
+    if File.exist?(upload_path + image_url)
+      image_url
+    else
+      Image.default_image
+    end
   end
 end

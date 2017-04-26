@@ -1,8 +1,13 @@
 class Article < ApplicationRecord
   extend FriendlyId
+  include Redis::Objects
+
   friendly_id :name, use: :slugged
   validates :name, presence: true, uniqueness: true
   validates :content, presence: true
+  
+  counter :hits
+
   belongs_to :category, counter_cache: true
   belongs_to :user
   before_save :fill_html_content

@@ -3,6 +3,8 @@ env_prefix = Rails.env[0,3]
 redis_passwd = eval("Settings.redis." + env_prefix + ".password")
 redis_url = "redis://:#{redis_passwd}@#{Settings.redis.host}:#{Settings.redis.port}/#{Settings.redis.db}"
 
+Redis::Objects.redis = Redis.new()
+
 # RedisStoreUrl = {
 #   host: Settings.redis.host,
 #   port: Settings.redis.port,
