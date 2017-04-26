@@ -1,26 +1,48 @@
 class Article < ApplicationRecord
   extend FriendlyId
-  include Redis::Objects
 
   friendly_id :name, use: :slugged
   validates :name, presence: true, uniqueness: true
   validates :content, presence: true
   
-  counter :hits
-
   belongs_to :category, counter_cache: true
   belongs_to :user
   before_save :fill_html_content
 
   scope :default_order, -> { order("created_at DESC") }
   scope :publish, -> {where("publish_state = ?",1)}
-  scope :read_count_order, -> { order("read_count DESC") }
-  
+
   def get_user
     self.user.try(:nick_name) || self.user.try(:email)
   end
-  
-  private 
+
+  def self.hits_sort
+    article_hash = Hash.new
+    Article.publish.each do |article|
+      article_hash.merge!({ article.id => article.hits})
+    end
+    article_arr = article_hash.sort do |a,b|
+      b[1] <=> a[1]
+    end
+    article_ids = article_arr.map { |article| article[0] }
+    Article.where("id in (:ids)",:ids=> article_ids)
+  end
+
+  def hits
+    cache_key = self.hits_cache_key
+    $redis.get(cache_key).to_i
+  end
+
+  def incr_hits
+    cache_key = self.hits_cache_key
+    $redis.incr(cache_key)
+  end
+
+  def hits_cache_key
+    ["hits",self.id].join("_")
+  end
+
+  private
 
   def fill_html_content
     self.content_html = MyMarkdown.render(self.content)

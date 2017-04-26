@@ -25,7 +25,7 @@
               <td class="col-sm-2"><%=article.category.name%></td>
               <td class="col-sm-2"><%=article.get_user%></td>
               <td class="col-sm-2"><%=article.publish_state == 1 ? t(".publish") : t(".unpublish")%></td>
-              <td class="col-sm-1"><%=article.read_count%></td>
+              <td class="col-sm-1"><%=article.hits%></td>
               <td class="col-sm-2">
               <% if can? :update, article %>
                 <%= link_to t('.edit'),edit_admin_article_path(article)%>|

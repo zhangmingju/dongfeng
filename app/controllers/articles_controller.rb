@@ -2,7 +2,7 @@ class ArticlesController < ApplicationController
   layout 'application'
   def show
     @article = Article.friendly.find(params[:id])
-    ArticleReadWorker.perform_async(@article.slug)
+    @article.incr_hits
     render 'admin/articles/show'
   end
 
