@@ -8,6 +8,7 @@ class Article < ApplicationRecord
   belongs_to :category, counter_cache: true
   belongs_to :user
   before_save :fill_html_content
+  before_destroy :delete_hits_cache_key
 
   scope :default_order, -> { order("created_at DESC") }
   scope :publish, -> {where("publish_state = ?",1)}
@@ -25,7 +26,7 @@ class Article < ApplicationRecord
       b[1] <=> a[1]
     end
     article_ids = article_arr.map { |article| article[0] }
-    Article.where("id in (:ids)",:ids=> article_ids)
+    Article.where("id in (:ids)",:ids=> article_ids).order("FIELD(id,#{article_ids.join(',')})")
   end
 
   def hits
@@ -38,8 +39,12 @@ class Article < ApplicationRecord
     $redis.incr(cache_key)
   end
 
+  def delete_hits_cache_key
+    $redis.del(hits_cache_key)
+  end
+
   def hits_cache_key
-    ["hits",self.id].join("_")
+    ["hits",self.id,self.created_at.to_i].join("_")
   end
 
   private
