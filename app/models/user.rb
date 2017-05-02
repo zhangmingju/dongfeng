@@ -9,8 +9,11 @@ class User < ApplicationRecord
   has_many :articles
   has_many :images
 
-  validates :phone_number, uniqueness: true
+  validates :phone_number, uniqueness: true, presence: true
   validates :nick_name, presence: true
+
+  # 分配默认角色
+  after_create :default_role
 
   def default_image
     defalt_flag = self.nick_name || self.email
@@ -20,6 +23,10 @@ class User < ApplicationRecord
       image.name = f
     end
     image.save!
+  end
+
+  def default_role
+    self.add_role("普通用户") if self.roles.blank?
   end
 
   def image_url
@@ -48,11 +55,11 @@ class User < ApplicationRecord
 
   # Override Devise to send mails with async
   def send_devise_notification(notification, *args)
-    LoggerApp.info("    notification: #{notification}")
-    LoggerApp.info("    args: #{args}")
+    # LoggerApp.info("    notification: #{notification}")
+    # LoggerApp.info("    args: #{args}")
     
-    LoggerApp.info("    self: #{self.inspect}")
-    LoggerApp.info("    devise_mailer: #{devise_mailer} #{devise_mailer.class}")
+    # LoggerApp.info("    self: #{self.inspect}")
+    # LoggerApp.info("    devise_mailer: #{devise_mailer} #{devise_mailer.class}")
     devise_mailer.send(notification, self, *args).deliver_later
   end
 end

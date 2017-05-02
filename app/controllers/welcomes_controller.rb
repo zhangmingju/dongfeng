@@ -5,7 +5,4 @@ class WelcomesController < ApplicationController
     @hot_articles = Article.hits_sort.limit(10)
     @categories = Category.includes(:image)
   end
-
-  def notice
-  end
 end

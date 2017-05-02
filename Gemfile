@@ -41,6 +41,7 @@ group :development, :test do
   gem 'byebug', platform: :mri
   gem 'rspec-rails'
   gem 'factory_girl_rails'
+  gem 'rails-controller-testing'
 end
 
 group :development do
@@ -64,6 +65,8 @@ gem 'letter_avatar'
 gem 'devise'
 gem 'devise-async'
 gem 'omniauth-github'
+gem 'rolify'
+gem 'cancan'
 
 gem 'mini_magick'
 gem 'carrierwave', '~> 1.0'
@@ -87,8 +90,7 @@ gem 'rails-timeago', '~> 2.0'
 
 gem 'kaminari'
 
-gem 'rolify'
-gem 'cancan'
+
 
 #deploy
 gem 'mina', '~> 1.0', '>= 1.0.6'
@@ -102,8 +104,14 @@ gem 'dalli'
 
 gem 'ransack'
 
+#oAuth
+gem 'doorkeeper'
+gem 'doorkeeper-i18n'
+#api
 gem 'grape'
 gem 'grape-jbuilder'
 gem 'jbuilder', '~> 2.5'
 
 gem 'config'
+
+
