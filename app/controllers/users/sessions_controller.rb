@@ -1,6 +1,6 @@
 class Users::SessionsController < Devise::SessionsController
 # before_action :configure_sign_in_params, only: [:create]
-  prepend_before_action :valify_captcha!, only: [:create]
+  #prepend_before_action :valify_captcha!, only: [:create]
 
   # GET /resource/sign_in
   def new

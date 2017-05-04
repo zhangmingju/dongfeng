@@ -1,19 +1,14 @@
 require 'doorkeeper/grape/helpers'
+require 'api_helpers'
+
+require 'v1/api_article.rb'
 class API < Grape::API
+  helpers ApiHelpers
   helpers Doorkeeper::Grape::Helpers
-  version 'v1', using: :path
+
+  prefix :api
   format :json
   formatter :json, Grape::Formatter::Jbuilder
-  prefix :api
-  
 
-  before do
-    doorkeeper_authorize! :public
-  end
-  resource :aaa do
-    desc "Return a public timeline."
-    get :test,jbuilder:"aaa/test"  do
-      @article = Article.first
-    end
-  end
+  mount V1::ApiArticle
 end
