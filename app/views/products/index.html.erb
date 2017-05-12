@@ -1,0 +1,46 @@
+<div id="content">
+  <div class="wrap_bigger">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <p>
+          <span><h2><%= @title %></h2></span>
+        </p>
+        <p>
+          <% if current_user.present?%>
+            <span class='btn btn-default btn-sm' name="product_count_commit">提交</span>
+          <% else%>
+            <span class='btn btn-default btn-sm'>请先登录</span>
+          <% end %>      
+        </p>
+    </div>
+    <%if @products.present? %>
+      <div>
+        <input type="hidden" id="vote_path" value="<%=vote_products_path%>" >
+      </div>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>选择</th>
+            <th>名称</th>
+            <th>描述</th>
+            <th>票数</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @products.each do |product|%>
+            <tr id="<%=product.id%>">
+              <td><%=check_box_tag("product_check_box","product_check_box") %></td>
+              <td><%=product.name%></td>
+              <td><%=product.desc%></td>
+              <td name='product_count'><%=product.count%></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= paginate @products %>
+    <% else %>
+      <h1><p class="data_blank">暂时还没有数据</p></h1>
+    <% end %>
+  </div>
+</div>
+

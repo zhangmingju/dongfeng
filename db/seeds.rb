@@ -18,3 +18,14 @@ user.skip_confirmation!
 user.save
 user.add_role(role.name)
 
+Product.create!([
+  {name: "product1"},
+  {name: "product2"},
+  {name: "product3"},
+  {name: "product4"},
+  {name: "product5"},
+  {name: "product6"}
+])
+
+
+

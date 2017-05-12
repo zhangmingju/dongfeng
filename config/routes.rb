@@ -16,6 +16,12 @@ Rails.application.routes.draw do
   resources :articles, only: [:show,:index]
   resources :categories, only: [:index,:show]
 
+  resources :products,only:[:index] do 
+    collection do 
+      post :vote
+    end
+  end
+
   resources :users, only: [:show,:update,:index]
   mount Sidekiq::Web => '/sidekiq'
 

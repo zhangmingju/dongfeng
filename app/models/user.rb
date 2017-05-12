@@ -8,6 +8,7 @@ class User < ApplicationRecord
   has_one :image, as: :target
   has_many :articles
   has_many :images
+  has_many :vote_ships
 
   validates :phone_number, uniqueness: true, presence: true
   validates :nick_name, presence: true

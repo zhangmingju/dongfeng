@@ -3,7 +3,8 @@ module MyMarkdown
     render_options = {
       filter_html:     true,
       hard_wrap:       true,
-      link_attributes: { rel: 'nofollow' }
+      link_attributes: { rel: 'nofollow' },
+      prettify:        true
     }
     renderer = Redcarpet::Render::HTML.new(render_options)
 
@@ -14,7 +15,8 @@ module MyMarkdown
       no_intra_emphasis:  true,
       strikethrough:      true,
       superscript:        true,
-      tables:             true
+      tables:             true,
+      highlight:          true
     }
     Redcarpet::Markdown.new(renderer, extensions).render(text).html_safe
   end
