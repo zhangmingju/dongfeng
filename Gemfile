@@ -114,7 +114,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'config'
 
-gem 'headless'
-gem 'selenium-webdriver'
+# gem 'headless'
+# gem 'selenium-webdriver'
 
 
