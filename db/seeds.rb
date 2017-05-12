@@ -27,5 +27,11 @@ Product.create!([
   {name: "product6"}
 ])
 
+user = User.new(email: 'test1@qq.com',password: '11111111',password_confirmation: '11111111',nick_name:"test1",phone_number:"test1")
+user.skip_confirmation!
+user.save
+user.add_role(Role.last.name)
+
+
 
 
