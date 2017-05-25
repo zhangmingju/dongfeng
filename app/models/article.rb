@@ -1,6 +1,8 @@
 class Article < ApplicationRecord
   extend FriendlyId
 
+  include A
+
   friendly_id :name, use: :slugged
   validates :name, presence: true, uniqueness: true
   validates :content, presence: true
