@@ -28,7 +28,11 @@ class Article < ApplicationRecord
       b[1] <=> a[1]
     end
     article_ids = article_arr.map { |article| article[0] }
-    Article.where("id in (:ids)",:ids=> article_ids).order("FIELD(id,#{article_ids.join(',')})")
+    if article_ids.present?
+      Article.where("id in (:ids)",:ids=> article_ids).order("FIELD(id,#{article_ids.join(',')})")
+    else
+      Article.where(id: [])
+    end
   end
 
   def hits

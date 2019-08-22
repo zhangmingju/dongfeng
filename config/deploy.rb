@@ -5,7 +5,7 @@ require 'mina/unicorn'
 require 'mina_sidekiq/tasks'
 
 set :application_name, 'dongfeng'
-set :domain, 'bajiudongfeng.xyz'
+set :domain, 'bajiudongfeng.top'
 set :deploy_to, '/home/zhang/dongfeng'
 set :repository, 'https://github.com/zhangmingju/dongfeng.git'
 set :branch, 'master'

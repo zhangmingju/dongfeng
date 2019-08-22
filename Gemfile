@@ -1,4 +1,4 @@
-source 'https://ruby.taobao.org'
+source 'https://gems.ruby-china.com'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -89,8 +89,6 @@ gem 'redcarpet', '~> 3.4'
 gem 'rails-timeago', '~> 2.0'
 
 gem 'kaminari'
-
-
 
 #deploy
 gem 'mina', '~> 1.0', '>= 1.0.6'
