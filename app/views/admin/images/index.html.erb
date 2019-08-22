@@ -19,7 +19,7 @@
           <% @images.each do |image|%>
             <tr>
               <td class="col-sm-1"><%=image.id%></td>
-              <td class="col-sm-2"><%=image.name.url.to_s%></td>
+              <td class="col-sm-2"><%=Settings.domain.url + image.name.url.to_s%></td>
               <td class="col-sm-2"><%=image_tag image.name.url.to_s,size:"80x80"%></td>
               <td class="col-sm-2"><%=image.get_user%></td>
               <td class="col-sm-2">
