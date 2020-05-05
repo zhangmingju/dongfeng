@@ -1,5 +1,5 @@
 class Admin::AdminController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   rescue_from CanCan::AccessDenied do |exception|
     LoggerApp.info(" exception: #{exception.message}")
     respond_to do |format|
