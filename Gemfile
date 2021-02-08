@@ -69,7 +69,7 @@ gem 'rolify'
 gem 'cancan'
 
 gem 'mini_magick'
-gem 'carrierwave', '~> 1.0'
+gem 'carrierwave', '~> 1.3'
 
 gem 'sidekiq'
 gem 'redis-namespace'
